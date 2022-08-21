@@ -14,7 +14,7 @@ to [their sdk](https://github.com/traderjoe-xyz/joe-sdk/blob/9ea22ece0253e5769cd
 getCreate2Address(
     FACTORY_ADDRESS[chainId],
     keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-    INIT_CODE_HASH[chainId]
+    init_code_hash[chainId]
 )
 ```
 
@@ -22,7 +22,7 @@ where:
 
 - [FACTORY_ADDRESS[chainId]](https://github.com/traderjoe-xyz/joe-sdk/blob/9ea22ece0253e5769cd32c89f9ce9ab8540c4264/src/constants.ts#L27)
   => `0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10`
-- [INIT_CODE_HASH[chainId]](https://github.com/traderjoe-xyz/joe-sdk/blob/9ea22ece0253e5769cd32c89f9ce9ab8540c4264/src/constants.ts#L157)
+- [init_code_hash[chainId]](https://github.com/traderjoe-xyz/joe-sdk/blob/9ea22ece0253e5769cd32c89f9ce9ab8540c4264/src/constants.ts#L157)
   => `0bbca9af0511ad1a1da383135cf3a8d2ac620e549ef9f6ae3a4c33c2fed0af91`
 
 I quickly tested this function in typescript to see what would be the outcome, with the following token addresses:
