@@ -31,7 +31,7 @@ fn get_pool_pair_address_with_create2_with_fee(
     token0_address: &str,
     token1_address: &str,
     expected_result: &str) {
-    let INIT_CODE_HASH = Bytes::from(
+    let init_code_hash = Bytes::from(
         hex::decode(init_code).unwrap(),
     );
     let factory: Address = factory_address
@@ -55,8 +55,7 @@ fn get_pool_pair_address_with_create2_with_fee(
     println!("-------\nFactory {:?} \nInput {:?}\nSalt {:?}\ninit_code {:?}", factory, input, salt, hex::decode(init_code).unwrap());
 
     let pool_address =
-        get_create2_address_from_hash(factory, salt.to_vec(), INIT_CODE_HASH);
-
+        get_create2_address_from_hash(factory, salt.to_vec(), init_code_hash);
 
     println!("POOL ADDRESS {:?} // {:?}", pool_address, expected_result);
 }
@@ -67,7 +66,7 @@ fn get_pool_pair_address_with_create2(
     token0_address: &str,
     token1_address: &str,
     expected_result: &str) {
-    let INIT_CODE_HASH = Bytes::from(
+    let init_code_hash = Bytes::from(
         hex::decode(init_code).unwrap(),
     );
     let factory: Address = factory_address
@@ -86,10 +85,10 @@ fn get_pool_pair_address_with_create2(
     ]);
 
     let salt = keccak256(&input);
-    println!("-------\nFactory {:?} \nInput {:?}\nSalt {:?}\ninit_code {:?}", factory, input, salt, INIT_CODE_HASH);
+    println!("-------\nFactory {:?} \nInput {:?}\nSalt {:?}\ninit_code {:?}", factory, input, salt, init_code_hash);
 
     let pool_address =
-        get_create2_address_from_hash(factory, salt.to_vec(), INIT_CODE_HASH);
+        get_create2_address_from_hash(factory, salt.to_vec(), init_code_hash);
 
     println!("POOL ADDRESS {:?} // {:?}", pool_address, expected_result);
 }
