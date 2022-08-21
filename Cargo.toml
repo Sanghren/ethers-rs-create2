@@ -1,0 +1,11 @@
+[package]
+name = "ethers-rs-create2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ethers-providers = "0.17.0"
+ethers-core = "0.17.0"
+ethers = { version = "0.17.0", features = ["abigen"]}
