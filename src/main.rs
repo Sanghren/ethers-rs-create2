@@ -17,6 +17,7 @@ fn main() {
 }
 
 fn get_pool_pair_address_with_create2_and_manual_concat(
+
     init_code: &str,
     factory_address: &str,
     token0_address: &str,
@@ -39,4 +40,5 @@ fn get_pool_pair_address_with_create2_and_manual_concat(
         get_create2_address_from_hash(factory, keccak256([token0.0, token1.0].concat()), init_code_hash);
 
     println!("POOL ADDRESS {:?} // {}", pool_address, expected_result);
+
 }
