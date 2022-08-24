@@ -35,9 +35,6 @@ fn get_pool_pair_address_with_create2_and_manual_concat(
         .parse()
         .unwrap();
 
-    let salt = keccak256(&input);
-    println!("-------\nFactory {:?} \nInput {:?}\nSalt {:?}\ninit_code {:?}", factory, input, salt, init_code_hash);
-
     let pool_address =
         get_create2_address_from_hash(factory, keccak256([token0.0, token1.0].concat()), init_code_hash);
 
