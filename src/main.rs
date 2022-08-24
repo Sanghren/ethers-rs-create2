@@ -88,7 +88,7 @@ fn get_pool_pair_address_with_create2(
     println!("-------\nFactory {:?} \nInput {:?}\nSalt {:?}\ninit_code {:?}", factory, input, salt, init_code_hash);
 
     let pool_address =
-        get_create2_address_from_hash(factory, salt.to_vec(), init_code_hash);
+        get_create2_address_from_hash(factory, salt, init_code_hash);
 
     println!("POOL ADDRESS {:?} // {:?}", pool_address, expected_result);
 }
