@@ -23,6 +23,13 @@ fn main() {
         "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
         "0xf4003f4efbe8691b60249e6afbd307abe7758adb",
     );
+
+    /// Test for TraderJoe pair USDC/wAVAX
+    get_pool_pair_address_with_create2_and_hardcoded_salt(
+        "0bbca9af0511ad1a1da383135cf3a8d2ac620e549ef9f6ae3a4c33c2fed0af91",
+        "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
+        "0xf4003f4efbe8691b60249e6afbd307abe7758adb",
+    );
 }
 
 fn get_pool_pair_address_with_create2_with_fee(
@@ -57,7 +64,7 @@ fn get_pool_pair_address_with_create2_with_fee(
     let pool_address =
         get_create2_address_from_hash(factory, salt.to_vec(), init_code_hash);
 
-    println!("POOL ADDRESS {:?} // {:?}", pool_address, expected_result);
+    println!("POOL ADDRESS {:?} // {}", pool_address, expected_result);
 }
 
 fn get_pool_pair_address_with_create2(
@@ -90,5 +97,27 @@ fn get_pool_pair_address_with_create2(
     let pool_address =
         get_create2_address_from_hash(factory, salt, init_code_hash);
 
-    println!("POOL ADDRESS {:?} // {:?}", pool_address, expected_result);
+    println!("POOL ADDRESS {:?} // {}", pool_address, expected_result);
+}
+
+fn get_pool_pair_address_with_create2_and_hardcoded_salt(
+    init_code: &str,
+    factory_address: &str,
+    expected_result: &str) {
+    let init_code_hash = Bytes::from(
+        hex::decode(init_code).unwrap(),
+    );
+    let salt = Bytes::from(
+        hex::decode("115724b86b4c61b1a0ab85be53e575db1cf6d2b82fbfee36e0f59fd5c837f2ad").unwrap(),
+    );
+    let factory: Address = factory_address
+        .parse()
+        .unwrap();
+
+    println!("-------\nFactory {:?} \nSalt {:2x?}\ninit_code {:?}", factory, salt, init_code_hash);
+
+    let pool_address =
+        get_create2_address_from_hash(factory, salt, init_code_hash);
+
+    println!("POOL ADDRESS {:?} // {}", pool_address, expected_result);
 }
